@@ -71,6 +71,10 @@ Tugas kamu:
 1. Untuk tiap saham, beri kesimpulan singkat: BELI / TAHAN / JUAL / HINDARI, dengan alasan 1-2 kalimat berdasarkan RSI, MA, volume, dan berita jika relevan.
 2. Tutup dengan catatan singkat bahwa ini bukan saran finansial resmi dan risiko ditanggung sendiri.
 3. Gunakan bahasa Indonesia santai tapi jelas, format dengan bullet point per saham, jangan bertele-tele.
+
+ATURAN PENTING: Bahas HANYA saham yang tercantum di "Data teknikal saham hari ini" di atas.
+Jangan pernah mengganti atau menambahkan saham lain (termasuk saham luar negeri) meskipun
+disebut di berita. Kalau berita tidak relevan dengan saham-saham tsb, abaikan saja bagian berita.
 """
     return prompt
 
@@ -96,10 +100,22 @@ def label_sinyal_sederhana(d):
 
 
 def main():
-    data_list = [ringkas_data(t) for t in WATCHLIST]
+    data_list_raw = [ringkas_data(t) for t in WATCHLIST]
+    data_valid = [d for d in data_list_raw if d]
+
+    if not data_valid:
+        # Semua data gagal diambil -> jangan panggil AI (biar tidak ngarang saham lain)
+        kirim_telegram(
+            "⚠️ *Gagal ambil data saham*\n\n"
+            "Data teknikal untuk semua saham di watchlist gagal diambil dari Yahoo Finance "
+            "(kemungkinan server sedang diblokir/timeout). Sinyal tidak dikirim kali ini. "
+            "Cek log run di GitHub Actions untuk detail error."
+        )
+        return
+
     berita = ambil_berita(jumlah=4)
 
-    prompt = buat_prompt(data_list, berita, SESI)
+    prompt = buat_prompt(data_valid, berita, SESI)
     response = model.generate_content(prompt)
     hasil = response.text
 
@@ -107,9 +123,7 @@ def main():
     kirim_telegram(f"*{label}*\n\n{hasil}")
 
     # simpan tiap sinyal ke riwayat, buat dievaluasi nanti
-    for d in data_list:
-        if not d:
-            continue
+    for d in data_valid:
         sinyal = label_sinyal_sederhana(d)
         tambah_sinyal(d["ticker"], sinyal, d["harga"], tipe=f"reguler-{SESI}")
 
