@@ -11,7 +11,7 @@ TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 
-# Daftar saham likuid (bisa ditambah/kurangi sesuai selera)
+# Daftar saham likuid / blue chip (bisa ditambah/kurangi sesuai selera)
 UNIVERSE = [
     "BBRI.JK", "BBCA.JK", "BMRI.JK", "BBNI.JK", "TLKM.JK", "ASII.JK",
     "UNVR.JK", "ICBP.JK", "ANTM.JK", "ADRO.JK", "PGAS.JK", "PTBA.JK",
@@ -19,6 +19,19 @@ UNIVERSE = [
     "SMGR.JK", "INDF.JK", "KLBF.JK", "CPIN.JK", "AKRA.JK", "EXCL.JK",
     "ITMG.JK", "MEDC.JK", "ISAT.JK", "TOWR.JK", "AMRT.JK", "AVIA.JK",
 ]
+
+# Saham harga rendah (candidate "gorengan", harga sering di bawah Rp300).
+# Ini cuma daftar CALON - dicek dulu harga aktualnya di bawah, bukan jaminan semuanya di bawah Rp300.
+# Kalau kamu tau kode saham murah favorit lain, tinggal tambahkan di sini (format: KODE.JK).
+UNIVERSE_SAHAM_MURAH = [
+    "BUMI.JK", "ENRG.JK", "DEWA.JK", "ELSA.JK", "MYRX.JK", "SIAP.JK",
+    "TRAM.JK", "BRMS.JK", "KRAS.JK", "WSKT.JK", "WIKA.JK", "WEGE.JK",
+    "PGEO.JK", "TARA.JK", "MTFN.JK", "POLA.JK", "BIPI.JK", "TOBA.JK",
+    "SMBR.JK", "INPC.JK", "BEKS.JK", "AGRO.JK", "PNBN.JK", "APIC.JK",
+    "MPPA.JK", "NASA.JK", "COAL.JK", "PTRO.JK", "RUIS.JK", "ZINC.JK",
+]
+
+HARGA_MAKS_MURAH = 300  # ambang batas harga saham "murah" (Rupiah)
 
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-3.6-flash")  # model stabil terkini (bukan yg paling baru, jatah gratis lebih longgar)
@@ -73,7 +86,7 @@ def panggil_gemini(prompt, percobaan_maks=3):
 
 
 def cocok_kriteria_scalping(d):
-    """Kriteria kasar buat kandidat scalping: momentum + volume + belum overbought parah."""
+    """Kriteria kasar buat kandidat scalping blue-chip: momentum + volume + belum overbought parah."""
     if not d or d["rsi"] is None or d["vol_avg20"] is None or d["ma20"] is None:
         return False
     volume_naik = d["volume"] > d["vol_avg20"] * 1.5
@@ -83,6 +96,18 @@ def cocok_kriteria_scalping(d):
     return volume_naik and momentum_ok and di_atas_ma20 and gerak_hari_ini
 
 
+def cocok_kriteria_murah(d):
+    """Kriteria buat saham harga rendah: harga di bawah ambang + ada tanda-tanda volume/gerakan aktif.
+    Kriteria momentum dilonggarkan karena saham murah biasanya lebih liar geraknya."""
+    if not d or d["vol_avg20"] is None:
+        return False
+    if d["harga"] > HARGA_MAKS_MURAH:
+        return False
+    volume_naik = d["volume"] > d["vol_avg20"] * 1.3  # sedikit lebih longgar dari kriteria blue-chip
+    gerak_hari_ini = abs(d["perubahan_persen"]) >= 2.0  # saham murah butuh gerakan % lebih besar biar berarti
+    return volume_naik and gerak_hari_ini
+
+
 def main():
     kandidat = []
     for ticker in UNIVERSE:
@@ -90,19 +115,27 @@ def main():
         if cocok_kriteria_scalping(d):
             kandidat.append(d)
 
-    if not kandidat:
+    kandidat_murah = []
+    for ticker in UNIVERSE_SAHAM_MURAH:
+        d = ringkas_data(ticker)
+        if cocok_kriteria_murah(d):
+            kandidat_murah.append(d)
+
+    if not kandidat and not kandidat_murah:
         kirim_telegram("🔍 *Scan Scalping*\n\nTidak ada saham yang memenuhi kriteria momentum saat ini.")
         return
 
     berita = ambil_berita(jumlah=4)
-    data_teks = "\n".join(
-        f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
-        f"RSI {d['rsi']:.1f}, volume {d['volume']:.0f} (avg20: {d['vol_avg20']:.0f})"
-        for d in kandidat
-    )
     berita_teks = "\n".join(f"- {b}" for b in berita) if berita else "Tidak ada berita relevan."
 
-    prompt = f"""Kamu asisten scalping saham untuk trader retail Indonesia (gaya cepat: beli-jual dalam hitungan jam/hari).
+    # --- Kirim hasil blue-chip (kalau ada) ---
+    if kandidat:
+        data_teks = "\n".join(
+            f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
+            f"RSI {d['rsi']:.1f}, volume {d['volume']:.0f} (avg20: {d['vol_avg20']:.0f})"
+            for d in kandidat
+        )
+        prompt = f"""Kamu asisten scalping saham untuk trader retail Indonesia (gaya cepat: beli-jual dalam hitungan jam/hari).
 
 Kandidat saham dengan momentum & volume tinggi hari ini:
 {data_teks}
@@ -119,13 +152,48 @@ Tugas kamu:
 ATURAN PENTING: Bahas HANYA saham yang tercantum di "Kandidat saham" di atas. Jangan pernah
 mengganti atau menambahkan saham lain (termasuk saham luar negeri) meskipun disebut di berita.
 """
-    response = panggil_gemini(prompt)
-    hasil = response
+        hasil = panggil_gemini(prompt)
+        kirim_telegram(f"🔥 *Kandidat Scalping Hari Ini*\n\n{hasil}")
 
-    kirim_telegram(f"🔥 *Kandidat Scalping Hari Ini*\n\n{hasil}")
+        for d in kandidat:
+            tambah_sinyal(d["ticker"], "SCALPING_BUY", d["harga"], tipe="scalping")
 
-    for d in kandidat:
-        tambah_sinyal(d["ticker"], "SCALPING_BUY", d["harga"], tipe="scalping")
+    # --- Kirim hasil saham murah (kalau ada), dengan peringatan ekstra ---
+    if kandidat_murah:
+        data_teks_murah = "\n".join(
+            f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
+            f"volume {d['volume']:.0f} (avg20: {d['vol_avg20']:.0f})"
+            for d in kandidat_murah
+        )
+        prompt_murah = f"""Kamu asisten trading saham harga rendah (di bawah Rp{HARGA_MAKS_MURAH}) untuk trader retail
+Indonesia yang mau scalping cepat. Saham jenis ini ("gorengan") sangat volatil dan rawan dipermainkan bandar.
+
+Kandidat saham murah dengan lonjakan volume/gerakan hari ini:
+{data_teks_murah}
+
+Berita pasar terbaru:
+{berita_teks}
+
+Tugas kamu:
+1. Untuk tiap saham, jelaskan singkat apa yang sedang terjadi (lonjakan volume/harga) dan risikonya.
+2. JANGAN merekomendasikan BELI secara eksplisit - cukup sajikan fakta datanya dan risikonya, karena saham
+   jenis ini sangat spekulatif dan berisiko tinggi kena "jebakan".
+3. Ingatkan dengan tegas bahwa saham harga rendah rawan manipulasi, likuiditas rendah, dan bisa ARB/ARA
+   mendadak - risiko kehilangan modal besar sangat nyata.
+4. Bahasa Indonesia santai, ringkas, bullet point.
+
+ATURAN PENTING: Bahas HANYA saham yang tercantum di atas. Jangan mengarang atau menambah saham lain.
+"""
+        hasil_murah = panggil_gemini(prompt_murah)
+        kirim_telegram(
+            f"⚠️ *Saham Murah (<Rp{HARGA_MAKS_MURAH}) - Volume/Gerakan Aktif*\n\n"
+            f"{hasil_murah}\n\n"
+            f"‼️ *Peringatan:* saham harga rendah sangat rawan manipulasi/likuiditas tipis. "
+            f"Ini info data, BUKAN ajakan beli. Riset sendiri & siapkan batas rugi ketat."
+        )
+
+        for d in kandidat_murah:
+            tambah_sinyal(d["ticker"], "SCALPING_MURAH_WATCH", d["harga"], tipe="scalping-murah")
 
 
 if __name__ == "__main__":
