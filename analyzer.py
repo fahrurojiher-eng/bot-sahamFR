@@ -2,38 +2,24 @@ import time
 import yfinance as yf
 import pandas as pd
 
-try:
-    from curl_cffi import requests as cffi_requests
-    _SESSION = cffi_requests.Session(impersonate="chrome")
-except Exception as e:
-    print(f"curl_cffi tidak tersedia, pakai session default: {e}")
-    _SESSION = None
-
 
 def get_data(ticker, period="3mo", interval="1d"):
-    # Coba metode 1: yf.Ticker dengan session menyamar browser (paling stabil di server cloud)
-    try:
-        t = yf.Ticker(ticker, session=_SESSION) if _SESSION else yf.Ticker(ticker)
-        df = t.history(period=period, interval=interval, auto_adjust=True)
-        if df is not None and not df.empty:
-            return df
-        else:
-            print(f"[{ticker}] Ticker().history() balikin data kosong.")
-    except Exception as e:
-        print(f"[{ticker}] Ticker().history() gagal: {e}")
+    # Catatan: JANGAN pasang session curl_cffi manual - yfinance versi baru
+    # sudah otomatis pakai curl_cffi sendiri di dalam (asal library-nya terinstall).
+    # Memasang session manual malah bikin error "'str' object has no attribute 'name'".
+    for percobaan in range(3):
+        try:
+            t = yf.Ticker(ticker)
+            df = t.history(period=period, interval=interval, auto_adjust=True)
+            if df is not None and not df.empty:
+                return df
+            else:
+                print(f"[{ticker}] Percobaan {percobaan+1}: data kosong.")
+        except Exception as e:
+            print(f"[{ticker}] Percobaan {percobaan+1} gagal: {e}")
+        time.sleep(2)
 
-    # Fallback: yf.download biasa
-    try:
-        time.sleep(1)
-        df = yf.download(ticker, period=period, interval=interval, progress=False, auto_adjust=True)
-        if df is not None and not df.empty:
-            return df
-        else:
-            print(f"[{ticker}] yf.download balikin data kosong.")
-    except Exception as e:
-        print(f"[{ticker}] yf.download gagal: {e}")
-
-    print(f"[{ticker}] TIDAK BISA AMBIL DATA sama sekali.")
+    print(f"[{ticker}] TIDAK BISA AMBIL DATA setelah 3 percobaan.")
     return pd.DataFrame()
 
 
