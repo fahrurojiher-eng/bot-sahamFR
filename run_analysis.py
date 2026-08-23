@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import requests
 import google.generativeai as genai
 
@@ -18,7 +19,7 @@ SESI = sys.argv[1] if len(sys.argv) > 1 else "pagi"
 WATCHLIST = ["BBRI.JK", "BBCA.JK", "BMRI.JK", "TLKM.JK", "ASII.JK"]
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-flash-latest")  # alias, otomatis pakai versi terbaru
+model = genai.GenerativeModel("gemini-2.5-flash")  # jatah gratis lebih longgar dari model terbaru
 
 
 def kirim_telegram(teks):
@@ -115,6 +116,24 @@ def label_sinyal_sederhana(d):
     return "TAHAN"
 
 
+def panggil_gemini(prompt, percobaan_maks=3):
+    """Panggil Gemini dengan retry otomatis kalau kena rate limit (error 429)."""
+    for i in range(percobaan_maks):
+        try:
+            response = model.generate_content(prompt)
+            return response.text
+        except Exception as e:
+            pesan_error = str(e)
+            print(f"Percobaan {i+1} ke Gemini gagal: {pesan_error}")
+            if "429" in pesan_error or "quota" in pesan_error.lower() or "rate" in pesan_error.lower():
+                tunggu = 30 * (i + 1)
+                print(f"Kena rate limit, tunggu {tunggu} detik sebelum coba lagi...")
+                time.sleep(tunggu)
+            else:
+                raise
+    raise RuntimeError("Gemini tetap gagal setelah beberapa kali percobaan (rate limit).")
+
+
 def main():
     data_list_raw = [ringkas_data(t) for t in WATCHLIST]
     data_valid = [d for d in data_list_raw if d]
@@ -132,8 +151,7 @@ def main():
     berita = ambil_berita(jumlah=4)
 
     prompt = buat_prompt(data_valid, berita, SESI)
-    response = model.generate_content(prompt)
-    hasil = response.text
+    hasil = panggil_gemini(prompt)
 
     label = "🌅 Sinyal Pagi" if SESI == "pagi" else "🌇 Sinyal Sore"
     kirim_telegram(f"*{label}*\n\n{hasil}")
