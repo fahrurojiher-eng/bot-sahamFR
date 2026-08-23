@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 import google.generativeai as genai
 
@@ -20,7 +21,7 @@ UNIVERSE = [
 ]
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-flash-latest")  # alias, otomatis pakai versi terbaru
+model = genai.GenerativeModel("gemini-2.5-flash")  # jatah gratis lebih longgar dari model terbaru
 
 
 def kirim_telegram(teks):
@@ -51,6 +52,24 @@ def kirim_telegram(teks):
         raise RuntimeError(f"Telegram sendMessage gagal total: {resp2.text}")
     else:
         print("Pesan Telegram berhasil terkirim (plain text, fallback).")
+
+
+def panggil_gemini(prompt, percobaan_maks=3):
+    """Panggil Gemini dengan retry otomatis kalau kena rate limit (error 429)."""
+    for i in range(percobaan_maks):
+        try:
+            response = model.generate_content(prompt)
+            return response.text
+        except Exception as e:
+            pesan_error = str(e)
+            print(f"Percobaan {i+1} ke Gemini gagal: {pesan_error}")
+            if "429" in pesan_error or "quota" in pesan_error.lower() or "rate" in pesan_error.lower():
+                tunggu = 30 * (i + 1)
+                print(f"Kena rate limit, tunggu {tunggu} detik sebelum coba lagi...")
+                time.sleep(tunggu)
+            else:
+                raise
+    raise RuntimeError("Gemini tetap gagal setelah beberapa kali percobaan (rate limit).")
 
 
 def cocok_kriteria_scalping(d):
@@ -100,8 +119,8 @@ Tugas kamu:
 ATURAN PENTING: Bahas HANYA saham yang tercantum di "Kandidat saham" di atas. Jangan pernah
 mengganti atau menambahkan saham lain (termasuk saham luar negeri) meskipun disebut di berita.
 """
-    response = model.generate_content(prompt)
-    hasil = response.text
+    response = panggil_gemini(prompt)
+    hasil = response
 
     kirim_telegram(f"🔥 *Kandidat Scalping Hari Ini*\n\n{hasil}")
 
