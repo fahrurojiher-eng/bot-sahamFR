@@ -23,16 +23,32 @@ model = genai.GenerativeModel("gemini-flash-latest")  # alias, otomatis pakai ve
 
 def kirim_telegram(teks):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+
+    # Coba kirim dengan format Markdown dulu
     resp = requests.post(url, data={
         "chat_id": TELEGRAM_CHAT_ID,
         "text": teks,
         "parse_mode": "Markdown",
     })
-    if not resp.ok:
-        print(f"GAGAL KIRIM TELEGRAM: {resp.status_code} - {resp.text}")
-        raise RuntimeError(f"Telegram sendMessage gagal: {resp.text}")
+
+    if resp.ok:
+        print("Pesan Telegram berhasil terkirim (Markdown).")
+        return
+
+    print(f"Markdown gagal ({resp.status_code}): {resp.text}")
+    print("Coba kirim ulang sebagai teks polos (tanpa formatting)...")
+
+    # Fallback: kirim tanpa parse_mode (teks polos), paling aman, jarang gagal
+    resp2 = requests.post(url, data={
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": teks,
+    })
+
+    if not resp2.ok:
+        print(f"GAGAL KIRIM TELEGRAM (plain text juga gagal): {resp2.status_code} - {resp2.text}")
+        raise RuntimeError(f"Telegram sendMessage gagal total: {resp2.text}")
     else:
-        print("Pesan Telegram berhasil terkirim.")
+        print("Pesan Telegram berhasil terkirim (plain text, fallback).")
 
 
 def buat_prompt(data_list, berita, sesi):
