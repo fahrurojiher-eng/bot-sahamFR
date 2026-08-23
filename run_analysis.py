@@ -19,7 +19,7 @@ SESI = sys.argv[1] if len(sys.argv) > 1 else "pagi"
 WATCHLIST = ["BBRI.JK", "BBCA.JK", "BMRI.JK", "TLKM.JK", "ASII.JK"]
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash")  # jatah gratis lebih longgar dari model terbaru
+model = genai.GenerativeModel("gemini-3.6-flash")  # model stabil terkini (bukan yg paling baru, jatah gratis lebih longgar)
 
 
 def kirim_telegram(teks):
