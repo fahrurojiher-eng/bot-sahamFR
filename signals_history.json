@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "id": "BBRI.JK-2026-08-23T21:43:02.022803",
+    "ticker": "BBRI.JK",
+    "tanggal": "2026-08-23",
+    "jam": "21:43",
+    "tipe": "reguler-pagi",
+    "sinyal": "TAHAN",
+    "harga_saat_sinyal": 3230.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "BBCA.JK-2026-08-23T21:43:02.023080",
+    "ticker": "BBCA.JK",
+    "tanggal": "2026-08-23",
+    "jam": "21:43",
+    "tipe": "reguler-pagi",
+    "sinyal": "TAHAN",
+    "harga_saat_sinyal": 6450.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "BMRI.JK-2026-08-23T21:43:02.023453",
+    "ticker": "BMRI.JK",
+    "tanggal": "2026-08-23",
+    "jam": "21:43",
+    "tipe": "reguler-pagi",
+    "sinyal": "TAHAN",
+    "harga_saat_sinyal": 4220.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "TLKM.JK-2026-08-23T21:43:02.023684",
+    "ticker": "TLKM.JK",
+    "tanggal": "2026-08-23",
+    "jam": "21:43",
+    "tipe": "reguler-pagi",
+    "sinyal": "TAHAN",
+    "harga_saat_sinyal": 2610.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "ASII.JK-2026-08-23T21:43:02.023879",
+    "ticker": "ASII.JK",
+    "tanggal": "2026-08-23",
+    "jam": "21:43",
+    "tipe": "reguler-pagi",
+    "sinyal": "BELI",
+    "harga_saat_sinyal": 4780.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  }
+]
