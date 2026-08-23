@@ -14,11 +14,16 @@ MIN_JAM_SEBELUM_EVALUASI = 3
 
 def kirim_telegram(teks):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    requests.post(url, data={
+    resp = requests.post(url, data={
         "chat_id": TELEGRAM_CHAT_ID,
         "text": teks,
         "parse_mode": "Markdown",
     })
+    if not resp.ok:
+        print(f"GAGAL KIRIM TELEGRAM: {resp.status_code} - {resp.text}")
+        raise RuntimeError(f"Telegram sendMessage gagal: {resp.text}")
+    else:
+        print("Pesan Telegram berhasil terkirim.")
 
 
 def sudah_waktunya(entry):
