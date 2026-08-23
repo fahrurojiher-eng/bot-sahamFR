@@ -1,10 +1,29 @@
+import time
 import yfinance as yf
 import pandas as pd
 
 
 def get_data(ticker, period="3mo", interval="1d"):
-    df = yf.download(ticker, period=period, interval=interval, progress=False)
-    return df
+    # Coba metode 1: yf.download
+    try:
+        df = yf.download(ticker, period=period, interval=interval, progress=False, auto_adjust=True)
+        if df is not None and not df.empty:
+            return df
+    except Exception as e:
+        print(f"[{ticker}] yf.download gagal: {e}")
+
+    # Fallback: metode Ticker().history() - kadang lebih stabil
+    try:
+        time.sleep(1)  # kasih jeda sebelum coba lagi
+        t = yf.Ticker(ticker)
+        df = t.history(period=period, interval=interval, auto_adjust=True)
+        if df is not None and not df.empty:
+            return df
+    except Exception as e:
+        print(f"[{ticker}] Ticker().history() juga gagal: {e}")
+
+    print(f"[{ticker}] TIDAK BISA AMBIL DATA sama sekali.")
+    return pd.DataFrame()
 
 
 def hitung_indikator(df):
@@ -27,7 +46,11 @@ def hitung_indikator(df):
 def ringkas_data(ticker):
     """Ambil data teknikal mentah (angka), dipakai sebagai bahan buat Gemini."""
     df = get_data(ticker)
-    if df.empty or len(df) < 50:
+    if df.empty:
+        print(f"[{ticker}] Data kosong, dilewati.")
+        return None
+    if len(df) < 50:
+        print(f"[{ticker}] Data cuma {len(df)} baris (butuh minimal 50), dilewati.")
         return None
 
     df = hitung_indikator(df)
