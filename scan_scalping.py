@@ -21,7 +21,7 @@ UNIVERSE = [
 ]
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash")  # jatah gratis lebih longgar dari model terbaru
+model = genai.GenerativeModel("gemini-3.6-flash")  # model stabil terkini (bukan yg paling baru, jatah gratis lebih longgar)
 
 
 def kirim_telegram(teks):
