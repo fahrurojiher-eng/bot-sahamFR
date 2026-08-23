@@ -80,6 +80,9 @@ Tugas kamu:
 2. Sebutkan level harga acuan kasar (entry area & area waspada/cut loss) berdasarkan data yang ada, tanpa klaim presisi tinggi.
 3. Ingatkan singkat bahwa scalping berisiko tinggi, bukan saran resmi.
 4. Bahasa Indonesia santai, ringkas, bullet point.
+
+ATURAN PENTING: Bahas HANYA saham yang tercantum di "Kandidat saham" di atas. Jangan pernah
+mengganti atau menambahkan saham lain (termasuk saham luar negeri) meskipun disebut di berita.
 """
     response = model.generate_content(prompt)
     hasil = response.text
