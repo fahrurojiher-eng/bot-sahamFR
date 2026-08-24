@@ -6,6 +6,7 @@ import google.generativeai as genai
 from analyzer import ringkas_data
 from news import ambil_berita
 from history import tambah_sinyal
+from idx_scraper import ambil_top_saham_murah
 
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
@@ -20,10 +21,9 @@ UNIVERSE = [
     "ITMG.JK", "MEDC.JK", "ISAT.JK", "TOWR.JK", "AMRT.JK", "AVIA.JK",
 ]
 
-# Saham harga rendah (candidate "gorengan", harga sering di bawah Rp300).
-# Ini cuma daftar CALON - dicek dulu harga aktualnya di bawah, bukan jaminan semuanya di bawah Rp300.
+# Daftar CADANGAN (fallback) - dipakai HANYA kalau scraping IDX gagal.
 # Kalau kamu tau kode saham murah favorit lain, tinggal tambahkan di sini (format: KODE.JK).
-UNIVERSE_SAHAM_MURAH = [
+UNIVERSE_SAHAM_MURAH_CADANGAN = [
     "BUMI.JK", "ENRG.JK", "DEWA.JK", "ELSA.JK", "MYRX.JK", "SIAP.JK",
     "TRAM.JK", "BRMS.JK", "KRAS.JK", "WSKT.JK", "WIKA.JK", "WEGE.JK",
     "PGEO.JK", "TARA.JK", "MTFN.JK", "POLA.JK", "BIPI.JK", "TOBA.JK",
@@ -115,8 +115,16 @@ def main():
         if cocok_kriteria_scalping(d):
             kandidat.append(d)
 
+    # Coba ambil daftar saham murah yang SEDANG RAMAI langsung dari IDX (dinamis)
+    universe_murah = ambil_top_saham_murah(harga_maks=HARGA_MAKS_MURAH, jumlah=15)
+    if universe_murah:
+        print(f"Pakai {len(universe_murah)} kandidat saham murah dari IDX (real-time).")
+    else:
+        print("IDX gagal diakses, pakai daftar cadangan (fallback) untuk saham murah.")
+        universe_murah = UNIVERSE_SAHAM_MURAH_CADANGAN
+
     kandidat_murah = []
-    for ticker in UNIVERSE_SAHAM_MURAH:
+    for ticker in universe_murah:
         d = ringkas_data(ticker)
         if cocok_kriteria_murah(d):
             kandidat_murah.append(d)
