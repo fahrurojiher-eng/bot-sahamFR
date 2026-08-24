@@ -57,6 +57,15 @@ def kirim_telegram(teks):
         print("Pesan Telegram berhasil terkirim (plain text, fallback).")
 
 
+def hitung_level_trading(harga, tp_persen, sl_persen):
+    """Hitung entry, take profit, dan stop loss berdasarkan harga saat ini + persentase target."""
+    return {
+        "entry": harga,
+        "tp": harga * (1 + tp_persen / 100),
+        "sl": harga * (1 - sl_persen / 100),
+    }
+
+
 def buat_prompt(data_list, berita, sesi, kode_saham_murah):
     konteks_sesi = (
         "User biasa beli saham pagi dan jual sore (scalping intraday)."
@@ -72,10 +81,19 @@ def buat_prompt(data_list, berita, sesi, kode_saham_murah):
         ma20 = f"{d['ma20']:.0f}" if d["ma20"] is not None else "N/A"
         ma50 = f"{d['ma50']:.0f}" if d["ma50"] is not None else "N/A"
         vol_avg = f"{d['vol_avg20']:.0f}" if d["vol_avg20"] is not None else "N/A"
-        tanda_murah = " [SAHAM HARGA RENDAH]" if d["ticker"] in kode_saham_murah else ""
+        is_murah = d["ticker"] in kode_saham_murah
+        tanda_murah = " [SAHAM HARGA RENDAH]" if is_murah else ""
+
+        # Saham murah = target lebih lebar (lebih volatil)
+        tp_pct, sl_pct = (4.0, 2.5) if is_murah else (2.5, 1.5)
+        level = hitung_level_trading(d["harga"], tp_pct, sl_pct)
+        d["level"] = level
+
         baris.append(
             f"- {d['ticker']}{tanda_murah}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
-            f"RSI {rsi}, MA20 {ma20}, MA50 {ma50}, volume {d['volume']:.0f} (avg20: {vol_avg})"
+            f"RSI {rsi}, MA20 {ma20}, MA50 {ma50}, volume {d['volume']:.0f} (avg20: {vol_avg}) | "
+            f"Entry: {level['entry']:.0f} | Take Profit (+{tp_pct}%): {level['tp']:.0f} | "
+            f"Stop Loss (-{sl_pct}%): {level['sl']:.0f}"
         )
     data_teks = "\n".join(baris)
 
@@ -85,7 +103,8 @@ def buat_prompt(data_list, berita, sesi, kode_saham_murah):
 {konteks_sesi}
 
 Data teknikal saham hari ini (saham dengan tanda [SAHAM HARGA RENDAH] adalah saham harga rendah/
-"gorengan" yang jauh lebih volatil dan rawan manipulasi dibanding saham blue-chip lainnya):
+"gorengan" yang jauh lebih volatil dan rawan manipulasi dibanding saham blue-chip lainnya.
+Entry/Take Profit/Stop Loss SUDAH DIHITUNG, jangan diubah, tinggal jelaskan alasannya):
 {data_teks}
 
 Berita pasar terbaru:
@@ -93,9 +112,10 @@ Berita pasar terbaru:
 
 Tugas kamu:
 1. Untuk tiap saham, beri kesimpulan singkat: BELI / TAHAN / JUAL / HINDARI, dengan alasan 1-2 kalimat berdasarkan RSI, MA, volume, dan berita jika relevan.
-2. Untuk saham yang bertanda [SAHAM HARGA RENDAH], tambahkan catatan singkat soal risiko ekstra (volatilitas tinggi, rawan manipulasi/likuiditas tipis, potensi ARB/ARA mendadak) - jangan rekomendasikan BELI dengan percaya diri tinggi untuk jenis saham ini.
-3. Tutup dengan catatan singkat bahwa ini bukan saran finansial resmi dan risiko ditanggung sendiri.
-4. Gunakan bahasa Indonesia santai tapi jelas, format dengan bullet point per saham, jangan bertele-tele.
+2. WAJIB cantumkan angka Entry, Take Profit, dan Stop Loss PERSIS seperti yang sudah dihitung di atas untuk tiap saham - jangan menghitung ulang atau mengubah angkanya.
+3. Untuk saham yang bertanda [SAHAM HARGA RENDAH], tambahkan catatan singkat soal risiko ekstra (volatilitas tinggi, rawan manipulasi/likuiditas tipis, potensi ARB/ARA mendadak) - jangan rekomendasikan BELI dengan percaya diri tinggi untuk jenis saham ini.
+4. Tutup dengan catatan singkat bahwa ini bukan saran finansial resmi, angka TP/SL adalah target kasar berbasis persentase (bukan jaminan), dan risiko ditanggung sendiri.
+5. Gunakan bahasa Indonesia santai tapi jelas, format dengan bullet point per saham, jangan bertele-tele.
 
 ATURAN PENTING: Bahas HANYA saham yang tercantum di "Data teknikal saham hari ini" di atas.
 Jangan pernah mengganti atau menambahkan saham lain (termasuk saham luar negeri) meskipun
