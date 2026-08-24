@@ -27,7 +27,29 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-3.6-flash")  # model stabil terkini (bukan yg paling baru, jatah gratis lebih longgar)
 
 
-def kirim_telegram(teks):
+BATAS_PANJANG_TELEGRAM = 4000  # sedikit di bawah limit asli (4096) buat jaga-jaga
+
+
+def pecah_teks(teks, batas=BATAS_PANJANG_TELEGRAM):
+    """Pecah teks panjang jadi beberapa bagian, coba potong di baris kosong biar rapi."""
+    if len(teks) <= batas:
+        return [teks]
+
+    bagian = []
+    sisa = teks
+    while len(sisa) > batas:
+        potong_di = sisa.rfind("\n\n", 0, batas)
+        if potong_di == -1:
+            potong_di = sisa.rfind("\n", 0, batas)
+        if potong_di == -1:
+            potong_di = batas
+        bagian.append(sisa[:potong_di])
+        sisa = sisa[potong_di:].lstrip("\n")
+    bagian.append(sisa)
+    return bagian
+
+
+def _kirim_satu_pesan(teks):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
 
     # Coba kirim dengan format Markdown dulu
@@ -44,7 +66,6 @@ def kirim_telegram(teks):
     print(f"Markdown gagal ({resp.status_code}): {resp.text}")
     print("Coba kirim ulang sebagai teks polos (tanpa formatting)...")
 
-    # Fallback: kirim tanpa parse_mode (teks polos), paling aman, jarang gagal
     resp2 = requests.post(url, data={
         "chat_id": TELEGRAM_CHAT_ID,
         "text": teks,
@@ -55,6 +76,14 @@ def kirim_telegram(teks):
         raise RuntimeError(f"Telegram sendMessage gagal total: {resp2.text}")
     else:
         print("Pesan Telegram berhasil terkirim (plain text, fallback).")
+
+
+def kirim_telegram(teks):
+    bagian_bagian = pecah_teks(teks)
+    total = len(bagian_bagian)
+    for i, bagian in enumerate(bagian_bagian, start=1):
+        label_bagian = f" ({i}/{total})" if total > 1 else ""
+        _kirim_satu_pesan(bagian + (f"\n\n_lanjut...{label_bagian}_" if i < total else ""))
 
 
 def hitung_level_trading(harga, tp_persen, sl_persen):
