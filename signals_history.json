@@ -453,5 +453,31 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "ADRO.JK-2026-08-24T08:05:51.733348",
+    "ticker": "ADRO.JK",
+    "tanggal": "2026-08-24",
+    "jam": "08:05",
+    "tipe": "scalping",
+    "sinyal": "SCALPING_BUY",
+    "harga_saat_sinyal": 2620.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "NASA.JK-2026-08-24T08:06:01.578471",
+    "ticker": "NASA.JK",
+    "tanggal": "2026-08-24",
+    "jam": "08:06",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 29.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
