@@ -85,6 +85,15 @@ def panggil_gemini(prompt, percobaan_maks=3):
     raise RuntimeError("Gemini tetap gagal setelah beberapa kali percobaan (rate limit).")
 
 
+def hitung_level_trading(harga, tp_persen, sl_persen):
+    """Hitung entry, take profit, dan stop loss berdasarkan harga saat ini + persentase target."""
+    return {
+        "entry": harga,
+        "tp": harga * (1 + tp_persen / 100),
+        "sl": harga * (1 - sl_persen / 100),
+    }
+
+
 def cocok_kriteria_scalping(d):
     """Kriteria kasar buat kandidat scalping blue-chip: momentum + volume + belum overbought parah."""
     if not d or d["rsi"] is None or d["vol_avg20"] is None or d["ma20"] is None:
@@ -138,14 +147,25 @@ def main():
 
     # --- Kirim hasil blue-chip (kalau ada) ---
     if kandidat:
-        data_teks = "\n".join(
-            f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
-            f"RSI {d['rsi']:.1f}, volume {d['volume']:.0f} (avg20: {d['vol_avg20']:.0f})"
-            for d in kandidat
-        )
+        TP_PERSEN_BLUECHIP = 2.0   # target profit scalping blue-chip
+        SL_PERSEN_BLUECHIP = 1.5   # batas rugi
+
+        baris = []
+        for d in kandidat:
+            level = hitung_level_trading(d["harga"], TP_PERSEN_BLUECHIP, SL_PERSEN_BLUECHIP)
+            d["level"] = level  # simpan buat dipakai lagi nanti (riwayat, dll)
+            baris.append(
+                f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
+                f"RSI {d['rsi']:.1f}, volume {d['volume']:.0f} (avg20: {d['vol_avg20']:.0f}) | "
+                f"Entry: {level['entry']:.0f} | Take Profit (+{TP_PERSEN_BLUECHIP}%): {level['tp']:.0f} | "
+                f"Stop Loss (-{SL_PERSEN_BLUECHIP}%): {level['sl']:.0f}"
+            )
+        data_teks = "\n".join(baris)
+
         prompt = f"""Kamu asisten scalping saham untuk trader retail Indonesia (gaya cepat: beli-jual dalam hitungan jam/hari).
 
-Kandidat saham dengan momentum & volume tinggi hari ini:
+Kandidat saham dengan momentum & volume tinggi hari ini (Entry/Take Profit/Stop Loss SUDAH DIHITUNG,
+jangan diubah, tinggal jelaskan alasannya):
 {data_teks}
 
 Berita pasar terbaru:
@@ -153,8 +173,10 @@ Berita pasar terbaru:
 
 Tugas kamu:
 1. Ranking kandidat dari yang paling menarik untuk scalping, beri alasan singkat (momentum, volume, risiko).
-2. Sebutkan level harga acuan kasar (entry area & area waspada/cut loss) berdasarkan data yang ada, tanpa klaim presisi tinggi.
-3. Ingatkan singkat bahwa scalping berisiko tinggi, bukan saran resmi.
+2. WAJIB cantumkan angka Entry, Take Profit, dan Stop Loss PERSIS seperti yang sudah dihitung di atas untuk
+   tiap saham - jangan menghitung ulang atau mengubah angkanya.
+3. Ingatkan singkat bahwa scalping berisiko tinggi, bukan saran resmi, dan angka TP/SL adalah target
+   kasar berbasis persentase, bukan jaminan harga akan sampai ke sana.
 4. Bahasa Indonesia santai, ringkas, bullet point.
 
 ATURAN PENTING: Bahas HANYA saham yang tercantum di "Kandidat saham" di atas. Jangan pernah
@@ -168,15 +190,26 @@ mengganti atau menambahkan saham lain (termasuk saham luar negeri) meskipun dise
 
     # --- Kirim hasil saham murah (kalau ada), dengan peringatan ekstra ---
     if kandidat_murah:
-        data_teks_murah = "\n".join(
-            f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
-            f"volume {d['volume']:.0f} (avg20: {d['vol_avg20']:.0f})"
-            for d in kandidat_murah
-        )
+        TP_PERSEN_MURAH = 4.0   # target lebih lebar karena saham murah lebih volatil
+        SL_PERSEN_MURAH = 2.5
+
+        baris_murah = []
+        for d in kandidat_murah:
+            level = hitung_level_trading(d["harga"], TP_PERSEN_MURAH, SL_PERSEN_MURAH)
+            d["level"] = level
+            baris_murah.append(
+                f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
+                f"volume {d['volume']:.0f} (avg20: {d['vol_avg20']:.0f}) | "
+                f"Entry: {level['entry']:.0f} | Take Profit (+{TP_PERSEN_MURAH}%): {level['tp']:.0f} | "
+                f"Stop Loss (-{SL_PERSEN_MURAH}%): {level['sl']:.0f}"
+            )
+        data_teks_murah = "\n".join(baris_murah)
+
         prompt_murah = f"""Kamu asisten trading saham harga rendah (di bawah Rp{HARGA_MAKS_MURAH}) untuk trader retail
 Indonesia yang mau scalping cepat. Saham jenis ini ("gorengan") sangat volatil dan rawan dipermainkan bandar.
 
-Kandidat saham murah dengan lonjakan volume/gerakan hari ini:
+Kandidat saham murah dengan lonjakan volume/gerakan hari ini (Entry/Take Profit/Stop Loss SUDAH DIHITUNG,
+jangan diubah):
 {data_teks_murah}
 
 Berita pasar terbaru:
@@ -184,11 +217,14 @@ Berita pasar terbaru:
 
 Tugas kamu:
 1. Untuk tiap saham, jelaskan singkat apa yang sedang terjadi (lonjakan volume/harga) dan risikonya.
-2. JANGAN merekomendasikan BELI secara eksplisit - cukup sajikan fakta datanya dan risikonya, karena saham
+2. Cantumkan angka Entry, Take Profit, dan Stop Loss PERSIS seperti yang sudah dihitung di atas -
+   sebagai INFORMASI, bukan ajakan. Jangan menghitung ulang atau mengubah angkanya.
+3. JANGAN merekomendasikan BELI secara eksplisit - cukup sajikan fakta datanya dan risikonya, karena saham
    jenis ini sangat spekulatif dan berisiko tinggi kena "jebakan".
-3. Ingatkan dengan tegas bahwa saham harga rendah rawan manipulasi, likuiditas rendah, dan bisa ARB/ARA
-   mendadak - risiko kehilangan modal besar sangat nyata.
-4. Bahasa Indonesia santai, ringkas, bullet point.
+4. Ingatkan dengan tegas bahwa saham harga rendah rawan manipulasi, likuiditas rendah, dan bisa ARB/ARA
+   mendadak - risiko kehilangan modal besar sangat nyata, dan stop loss mungkin tidak selalu bisa
+   dieksekusi tepat waktu di saham likuiditas rendah.
+5. Bahasa Indonesia santai, ringkas, bullet point.
 
 ATURAN PENTING: Bahas HANYA saham yang tercantum di atas. Jangan mengarang atau menambah saham lain.
 """
