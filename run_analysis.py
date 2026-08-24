@@ -7,6 +7,7 @@ import google.generativeai as genai
 from analyzer import ringkas_data
 from news import ambil_berita
 from history import tambah_sinyal
+from idx_scraper import ambil_top_saham_murah
 
 # ==== Ambil dari GitHub Secrets (environment variables) ====
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
@@ -17,6 +18,10 @@ GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 SESI = sys.argv[1] if len(sys.argv) > 1 else "pagi"
 
 WATCHLIST = ["BBRI.JK", "BBCA.JK", "BMRI.JK", "TLKM.JK", "ASII.JK"]
+HARGA_MAKS_MURAH = 300
+
+# Daftar CADANGAN (fallback) - dipakai HANYA kalau scraping IDX real-time gagal.
+WATCHLIST_MURAH_CADANGAN = ["BUMI.JK", "ENRG.JK", "DEWA.JK", "ELSA.JK", "WSKT.JK", "WIKA.JK"]
 
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-3.6-flash")  # model stabil terkini (bukan yg paling baru, jatah gratis lebih longgar)
@@ -52,7 +57,7 @@ def kirim_telegram(teks):
         print("Pesan Telegram berhasil terkirim (plain text, fallback).")
 
 
-def buat_prompt(data_list, berita, sesi):
+def buat_prompt(data_list, berita, sesi, kode_saham_murah):
     konteks_sesi = (
         "User biasa beli saham pagi dan jual sore (scalping intraday)."
         if sesi == "pagi" else
@@ -67,8 +72,9 @@ def buat_prompt(data_list, berita, sesi):
         ma20 = f"{d['ma20']:.0f}" if d["ma20"] is not None else "N/A"
         ma50 = f"{d['ma50']:.0f}" if d["ma50"] is not None else "N/A"
         vol_avg = f"{d['vol_avg20']:.0f}" if d["vol_avg20"] is not None else "N/A"
+        tanda_murah = " [SAHAM HARGA RENDAH]" if d["ticker"] in kode_saham_murah else ""
         baris.append(
-            f"- {d['ticker']}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
+            f"- {d['ticker']}{tanda_murah}: harga {d['harga']:.0f}, perubahan {d['perubahan_persen']:.2f}%, "
             f"RSI {rsi}, MA20 {ma20}, MA50 {ma50}, volume {d['volume']:.0f} (avg20: {vol_avg})"
         )
     data_teks = "\n".join(baris)
@@ -78,7 +84,8 @@ def buat_prompt(data_list, berita, sesi):
     prompt = f"""Kamu adalah asisten analisis saham untuk trader retail Indonesia.
 {konteks_sesi}
 
-Data teknikal saham hari ini:
+Data teknikal saham hari ini (saham dengan tanda [SAHAM HARGA RENDAH] adalah saham harga rendah/
+"gorengan" yang jauh lebih volatil dan rawan manipulasi dibanding saham blue-chip lainnya):
 {data_teks}
 
 Berita pasar terbaru:
@@ -86,8 +93,9 @@ Berita pasar terbaru:
 
 Tugas kamu:
 1. Untuk tiap saham, beri kesimpulan singkat: BELI / TAHAN / JUAL / HINDARI, dengan alasan 1-2 kalimat berdasarkan RSI, MA, volume, dan berita jika relevan.
-2. Tutup dengan catatan singkat bahwa ini bukan saran finansial resmi dan risiko ditanggung sendiri.
-3. Gunakan bahasa Indonesia santai tapi jelas, format dengan bullet point per saham, jangan bertele-tele.
+2. Untuk saham yang bertanda [SAHAM HARGA RENDAH], tambahkan catatan singkat soal risiko ekstra (volatilitas tinggi, rawan manipulasi/likuiditas tipis, potensi ARB/ARA mendadak) - jangan rekomendasikan BELI dengan percaya diri tinggi untuk jenis saham ini.
+3. Tutup dengan catatan singkat bahwa ini bukan saran finansial resmi dan risiko ditanggung sendiri.
+4. Gunakan bahasa Indonesia santai tapi jelas, format dengan bullet point per saham, jangan bertele-tele.
 
 ATURAN PENTING: Bahas HANYA saham yang tercantum di "Data teknikal saham hari ini" di atas.
 Jangan pernah mengganti atau menambahkan saham lain (termasuk saham luar negeri) meskipun
@@ -135,7 +143,15 @@ def panggil_gemini(prompt, percobaan_maks=3):
 
 
 def main():
-    data_list_raw = [ringkas_data(t) for t in WATCHLIST]
+    watchlist_murah = ambil_top_saham_murah(harga_maks=HARGA_MAKS_MURAH, jumlah=6)
+    if watchlist_murah:
+        print(f"Pakai {len(watchlist_murah)} saham murah dari IDX (real-time).")
+    else:
+        print("IDX gagal diakses, pakai daftar cadangan (fallback) untuk saham murah.")
+        watchlist_murah = WATCHLIST_MURAH_CADANGAN
+
+    semua_kode = WATCHLIST + watchlist_murah
+    data_list_raw = [ringkas_data(t) for t in semua_kode]
     data_valid = [d for d in data_list_raw if d]
 
     if not data_valid:
@@ -150,7 +166,7 @@ def main():
 
     berita = ambil_berita(jumlah=4)
 
-    prompt = buat_prompt(data_valid, berita, SESI)
+    prompt = buat_prompt(data_valid, berita, SESI, kode_saham_murah=watchlist_murah)
     hasil = panggil_gemini(prompt)
 
     label = "🌅 Sinyal Pagi" if SESI == "pagi" else "🌇 Sinyal Sore"
