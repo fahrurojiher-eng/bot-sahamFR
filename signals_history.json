@@ -1038,5 +1038,18 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "MDKA.JK-2026-08-26T06:09:53.092532",
+    "ticker": "MDKA.JK",
+    "tanggal": "2026-08-26",
+    "jam": "06:09",
+    "tipe": "scalping",
+    "sinyal": "SCALPING_BUY",
+    "harga_saat_sinyal": 3090.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
