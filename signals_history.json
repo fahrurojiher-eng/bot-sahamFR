@@ -1099,10 +1099,10 @@
     "tipe": "reguler-sore",
     "sinyal": "BELI",
     "harga_saat_sinyal": 2600.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": NaN,
+    "perubahan_persen": NaN,
+    "benar": false
   },
   {
     "id": "ASII.JK-2026-08-26T09:28:31.419145",
@@ -1112,10 +1112,10 @@
     "tipe": "reguler-sore",
     "sinyal": "BELI",
     "harga_saat_sinyal": 4780.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": NaN,
+    "perubahan_persen": NaN,
+    "benar": false
   },
   {
     "id": "BUMI.JK-2026-08-26T09:28:31.420159",
@@ -1190,7 +1190,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 3180.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1203,7 +1203,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 6525.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1216,7 +1216,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 4230.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1229,7 +1229,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2580.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1242,10 +1242,10 @@
     "tipe": "reguler-pagi",
     "sinyal": "BELI",
     "harga_saat_sinyal": 4770.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": NaN,
+    "perubahan_persen": NaN,
+    "benar": false
   },
   {
     "id": "BUMI.JK-2026-08-28T07:05:34.533257",
@@ -1255,7 +1255,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 192.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1268,7 +1268,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 1270.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1281,7 +1281,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 446.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1294,7 +1294,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 695.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -1307,7 +1307,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 204.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
