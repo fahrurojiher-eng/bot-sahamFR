@@ -1701,5 +1701,57 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "SMGR.JK-2026-09-01T03:15:39.956754",
+    "ticker": "SMGR.JK",
+    "tanggal": "2026-09-01",
+    "jam": "03:15",
+    "tipe": "scalping",
+    "sinyal": "SCALPING_BUY",
+    "harga_saat_sinyal": 1655.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-09-01T03:15:52.196981",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-09-01",
+    "jam": "03:15",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 242.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "SMBR.JK-2026-09-01T03:15:52.198631",
+    "ticker": "SMBR.JK",
+    "tanggal": "2026-09-01",
+    "jam": "03:15",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 177.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "RUIS.JK-2026-09-01T03:15:52.200317",
+    "ticker": "RUIS.JK",
+    "tanggal": "2026-09-01",
+    "jam": "03:15",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 210.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
