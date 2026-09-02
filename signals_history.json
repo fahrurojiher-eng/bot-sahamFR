@@ -2078,5 +2078,31 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "INPC.JK-2026-09-02T03:15:23.683290",
+    "ticker": "INPC.JK",
+    "tanggal": "2026-09-02",
+    "jam": "03:15",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 157.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "AGRO.JK-2026-09-02T03:15:23.684688",
+    "ticker": "AGRO.JK",
+    "tanggal": "2026-09-02",
+    "jam": "03:15",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 156.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
