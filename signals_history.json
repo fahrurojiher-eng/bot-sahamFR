@@ -2403,5 +2403,44 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "CPIN.JK-2026-09-03T05:29:22.179997",
+    "ticker": "CPIN.JK",
+    "tanggal": "2026-09-03",
+    "jam": "05:29",
+    "tipe": "scalping",
+    "sinyal": "SCALPING_BUY",
+    "harga_saat_sinyal": 3270.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-09-03T05:32:47.421799",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-09-03",
+    "jam": "05:32",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 252.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "INPC.JK-2026-09-03T05:32:47.424137",
+    "ticker": "INPC.JK",
+    "tanggal": "2026-09-03",
+    "jam": "05:32",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 167.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
