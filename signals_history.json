@@ -3014,5 +3014,31 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "KLBF.JK-2026-09-07T03:15:51.079857",
+    "ticker": "KLBF.JK",
+    "tanggal": "2026-09-07",
+    "jam": "03:15",
+    "tipe": "scalping",
+    "sinyal": "SCALPING_BUY",
+    "harga_saat_sinyal": 795.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "INPC.JK-2026-09-07T03:16:01.649204",
+    "ticker": "INPC.JK",
+    "tanggal": "2026-09-07",
+    "jam": "03:16",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 163.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
