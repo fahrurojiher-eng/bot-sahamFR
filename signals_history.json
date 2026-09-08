@@ -3326,5 +3326,18 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "POLA.JK-2026-09-08T03:16:11.888894",
+    "ticker": "POLA.JK",
+    "tanggal": "2026-09-08",
+    "jam": "03:16",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 67.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
