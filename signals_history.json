@@ -3950,5 +3950,18 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "TARA.JK-2026-09-10T03:16:17.867538",
+    "ticker": "TARA.JK",
+    "tanggal": "2026-09-10",
+    "jam": "03:16",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 36.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
