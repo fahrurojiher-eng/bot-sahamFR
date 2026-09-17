@@ -5341,5 +5341,18 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "SMBR.JK-2026-09-17T03:16:06.363326",
+    "ticker": "SMBR.JK",
+    "tanggal": "2026-09-17",
+    "jam": "03:16",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 180.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
