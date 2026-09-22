@@ -6186,5 +6186,18 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "BEKS.JK-2026-09-22T05:13:24.668601",
+    "ticker": "BEKS.JK",
+    "tanggal": "2026-09-22",
+    "jam": "05:13",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 22.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
