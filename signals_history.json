@@ -6992,5 +6992,18 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "MPPA.JK-2026-09-25T08:40:06.779327",
+    "ticker": "MPPA.JK",
+    "tanggal": "2026-09-25",
+    "jam": "08:40",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 36.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
