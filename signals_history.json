@@ -7443,10 +7443,10 @@
     "tipe": "reguler-sore",
     "sinyal": "BELI",
     "harga_saat_sinyal": 3140.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 3170.0,
+    "perubahan_persen": 0.96,
+    "benar": true
   },
   {
     "id": "BBCA.JK-2026-09-28T15:51:38.917250",
@@ -7456,10 +7456,10 @@
     "tipe": "reguler-sore",
     "sinyal": "BELI",
     "harga_saat_sinyal": 6225.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 6150.0,
+    "perubahan_persen": -1.2,
+    "benar": false
   },
   {
     "id": "BMRI.JK-2026-09-28T15:51:38.923268",
@@ -7469,10 +7469,10 @@
     "tipe": "reguler-sore",
     "sinyal": "BELI",
     "harga_saat_sinyal": 4020.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 4030.0,
+    "perubahan_persen": 0.25,
+    "benar": true
   },
   {
     "id": "TLKM.JK-2026-09-28T15:51:38.929224",
@@ -7508,10 +7508,10 @@
     "tipe": "reguler-sore",
     "sinyal": "BELI",
     "harga_saat_sinyal": 180.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 177.0,
+    "perubahan_persen": -1.67,
+    "benar": false
   },
   {
     "id": "ENRG.JK-2026-09-28T15:51:38.947098",
@@ -7547,10 +7547,10 @@
     "tipe": "reguler-sore",
     "sinyal": "BELI",
     "harga_saat_sinyal": 680.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 685.0,
+    "perubahan_persen": 0.74,
+    "benar": true
   },
   {
     "id": "WIKA.JK-2026-09-28T15:51:38.965522",
