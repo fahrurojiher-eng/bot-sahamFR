@@ -8253,5 +8253,18 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "NASA.JK-2026-10-02T10:55:18.490295",
+    "ticker": "NASA.JK",
+    "tanggal": "2026-10-02",
+    "jam": "10:55",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 37.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
