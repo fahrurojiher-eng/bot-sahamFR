@@ -8526,5 +8526,70 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-10-05T10:11:56.683408",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-10-05",
+    "jam": "10:11",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 238.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "TARA.JK-2026-10-05T10:11:56.689157",
+    "ticker": "TARA.JK",
+    "tanggal": "2026-10-05",
+    "jam": "10:11",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 37.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "INPC.JK-2026-10-05T10:11:56.694647",
+    "ticker": "INPC.JK",
+    "tanggal": "2026-10-05",
+    "jam": "10:11",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 155.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "BEKS.JK-2026-10-05T10:11:56.700167",
+    "ticker": "BEKS.JK",
+    "tanggal": "2026-10-05",
+    "jam": "10:11",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 30.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "NASA.JK-2026-10-05T10:11:56.705680",
+    "ticker": "NASA.JK",
+    "tanggal": "2026-10-05",
+    "jam": "10:11",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 39.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
