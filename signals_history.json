@@ -9280,5 +9280,44 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "TARA.JK-2026-10-07T11:34:18.984251",
+    "ticker": "TARA.JK",
+    "tanggal": "2026-10-07",
+    "jam": "11:34",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 42.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "POLA.JK-2026-10-07T11:34:18.990524",
+    "ticker": "POLA.JK",
+    "tanggal": "2026-10-07",
+    "jam": "11:34",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 110.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "NASA.JK-2026-10-07T11:34:18.996644",
+    "ticker": "NASA.JK",
+    "tanggal": "2026-10-07",
+    "jam": "11:34",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 45.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
