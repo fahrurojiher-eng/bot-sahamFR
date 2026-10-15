@@ -10333,5 +10333,31 @@
     "harga_evaluasi": 90.0,
     "perubahan_persen": 0.0,
     "benar": null
+  },
+  {
+    "id": "BUMI.JK-2026-10-15T09:39:36.388441",
+    "ticker": "BUMI.JK",
+    "tanggal": "2026-10-15",
+    "jam": "09:39",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 157.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "BEKS.JK-2026-10-15T09:39:36.396811",
+    "ticker": "BEKS.JK",
+    "tanggal": "2026-10-15",
+    "jam": "09:39",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 35.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
