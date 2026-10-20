@@ -11217,5 +11217,70 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "BUMI.JK-2026-10-20T08:21:49.000111",
+    "ticker": "BUMI.JK",
+    "tanggal": "2026-10-20",
+    "jam": "08:21",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 134.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "DEWA.JK-2026-10-20T08:21:49.009512",
+    "ticker": "DEWA.JK",
+    "tanggal": "2026-10-20",
+    "jam": "08:21",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 254.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-10-20T08:21:49.018330",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-10-20",
+    "jam": "08:21",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 184.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "AGRO.JK-2026-10-20T08:21:49.027181",
+    "ticker": "AGRO.JK",
+    "tanggal": "2026-10-20",
+    "jam": "08:21",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 114.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "MPPA.JK-2026-10-20T08:21:49.035907",
+    "ticker": "MPPA.JK",
+    "tanggal": "2026-10-20",
+    "jam": "08:21",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 34.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
