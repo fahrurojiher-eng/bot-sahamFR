@@ -11282,5 +11282,83 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "BUKA.JK-2026-10-20T09:50:44.512075",
+    "ticker": "BUKA.JK",
+    "tanggal": "2026-10-20",
+    "jam": "09:50",
+    "tipe": "scalping",
+    "sinyal": "SCALPING_BUY",
+    "harga_saat_sinyal": 106.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "BUMI.JK-2026-10-20T09:50:59.519858",
+    "ticker": "BUMI.JK",
+    "tanggal": "2026-10-20",
+    "jam": "09:50",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 135.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "DEWA.JK-2026-10-20T09:50:59.529044",
+    "ticker": "DEWA.JK",
+    "tanggal": "2026-10-20",
+    "jam": "09:50",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 256.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-10-20T09:50:59.538063",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-10-20",
+    "jam": "09:50",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 186.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "AGRO.JK-2026-10-20T09:50:59.547472",
+    "ticker": "AGRO.JK",
+    "tanggal": "2026-10-20",
+    "jam": "09:50",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 114.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "MPPA.JK-2026-10-20T09:50:59.556587",
+    "ticker": "MPPA.JK",
+    "tanggal": "2026-10-20",
+    "jam": "09:50",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 34.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
