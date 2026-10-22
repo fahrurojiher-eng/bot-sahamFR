@@ -11772,7 +11772,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2840.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11785,7 +11785,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 5250.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11798,7 +11798,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 3790.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11811,7 +11811,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2160.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11824,7 +11824,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 4570.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11837,7 +11837,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 144.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11850,7 +11850,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 840.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11863,7 +11863,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 266.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11876,7 +11876,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 655.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11889,7 +11889,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 204.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -11902,9 +11902,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 141.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 139.0,
+    "perubahan_persen": -1.42,
     "benar": null
   },
   {
@@ -11915,9 +11915,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 189.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 190.0,
+    "perubahan_persen": 0.53,
     "benar": null
   },
   {
@@ -11928,9 +11928,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 94.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 93.0,
+    "perubahan_persen": -1.06,
     "benar": null
   },
   {
@@ -11941,10 +11941,10 @@
     "tipe": "scalping",
     "sinyal": "SCALPING_BUY",
     "harga_saat_sinyal": 3410.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 3410.0,
+    "perubahan_persen": 0.0,
+    "benar": false
   },
   {
     "id": "BUKA.JK-2026-10-22T09:54:36.203049",
@@ -11954,10 +11954,10 @@
     "tipe": "scalping",
     "sinyal": "SCALPING_BUY",
     "harga_saat_sinyal": 109.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 109.0,
+    "perubahan_persen": 0.0,
+    "benar": false
   },
   {
     "id": "MEDC.JK-2026-10-22T09:54:36.212713",
@@ -11967,10 +11967,10 @@
     "tipe": "scalping",
     "sinyal": "SCALPING_BUY",
     "harga_saat_sinyal": 1450.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
-    "benar": null
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 1450.0,
+    "perubahan_persen": 0.0,
+    "benar": false
   },
   {
     "id": "BUMI.JK-2026-10-22T09:54:58.746091",
@@ -11980,9 +11980,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 139.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 139.0,
+    "perubahan_persen": 0.0,
     "benar": null
   },
   {
@@ -11993,9 +11993,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 190.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 190.0,
+    "perubahan_persen": 0.0,
     "benar": null
   },
   {
@@ -12006,9 +12006,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 93.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 93.0,
+    "perubahan_persen": 0.0,
     "benar": null
   },
   {
@@ -12019,9 +12019,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 128.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 128.0,
+    "perubahan_persen": 0.0,
     "benar": null
   },
   {
@@ -12032,9 +12032,9 @@
     "tipe": "scalping-murah",
     "sinyal": "SCALPING_MURAH_WATCH",
     "harga_saat_sinyal": 35.0,
-    "sudah_dievaluasi": false,
-    "harga_evaluasi": null,
-    "perubahan_persen": null,
+    "sudah_dievaluasi": true,
+    "harga_evaluasi": 35.0,
+    "perubahan_persen": 0.0,
     "benar": null
   },
   {
@@ -12045,7 +12045,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2900.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12058,7 +12058,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 5175.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12071,7 +12071,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 3850.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12084,7 +12084,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2200.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12097,7 +12097,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 4450.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12110,7 +12110,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 139.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12123,7 +12123,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 815.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12136,7 +12136,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 258.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12149,7 +12149,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 660.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12162,7 +12162,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 204.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
