@@ -11893,5 +11893,44 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "BUMI.JK-2026-10-22T08:27:47.932147",
+    "ticker": "BUMI.JK",
+    "tanggal": "2026-10-22",
+    "jam": "08:27",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 141.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-10-22T08:27:47.941924",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-10-22",
+    "jam": "08:27",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 189.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "BIPI.JK-2026-10-22T08:27:47.951488",
+    "ticker": "BIPI.JK",
+    "tanggal": "2026-10-22",
+    "jam": "08:27",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 94.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
