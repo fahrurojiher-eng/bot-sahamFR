@@ -12487,7 +12487,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2860.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12500,7 +12500,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 4960.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12513,7 +12513,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 3830.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12526,7 +12526,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2200.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12539,7 +12539,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 4530.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12552,7 +12552,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 140.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12565,7 +12565,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 835.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12578,7 +12578,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 262.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12591,7 +12591,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 640.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12604,7 +12604,7 @@
     "tipe": "reguler-pagi",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 204.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12617,7 +12617,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2910.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12630,7 +12630,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 4940.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12643,7 +12643,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 3910.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12656,7 +12656,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 2250.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12669,7 +12669,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 4560.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12682,7 +12682,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 137.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12695,7 +12695,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 820.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12708,7 +12708,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 260.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12721,7 +12721,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 640.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
@@ -12734,7 +12734,7 @@
     "tipe": "reguler-sore",
     "sinyal": "TAHAN",
     "harga_saat_sinyal": 204.0,
-    "sudah_dievaluasi": false,
+    "sudah_dievaluasi": true,
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
