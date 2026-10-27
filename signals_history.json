@@ -12894,5 +12894,44 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "AKRA.JK-2026-10-27T10:15:06.253161",
+    "ticker": "AKRA.JK",
+    "tanggal": "2026-10-27",
+    "jam": "10:15",
+    "tipe": "scalping",
+    "sinyal": "SCALPING_BUY",
+    "harga_saat_sinyal": 1435.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-10-27T10:15:18.206111",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-10-27",
+    "jam": "10:15",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 178.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "SMBR.JK-2026-10-27T10:15:18.216704",
+    "ticker": "SMBR.JK",
+    "tanggal": "2026-10-27",
+    "jam": "10:15",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 126.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
