@@ -12868,5 +12868,31 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "KRAS.JK-2026-10-27T08:47:33.245380",
+    "ticker": "KRAS.JK",
+    "tanggal": "2026-10-27",
+    "jam": "08:47",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 177.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "SMBR.JK-2026-10-27T08:47:33.255910",
+    "ticker": "SMBR.JK",
+    "tanggal": "2026-10-27",
+    "jam": "08:47",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 126.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
