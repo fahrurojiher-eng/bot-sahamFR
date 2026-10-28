@@ -13193,5 +13193,31 @@
     "harga_evaluasi": null,
     "perubahan_persen": null,
     "benar": null
+  },
+  {
+    "id": "WEGE.JK-2026-10-28T09:28:22.920413",
+    "ticker": "WEGE.JK",
+    "tanggal": "2026-10-28",
+    "jam": "09:28",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 30.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
+  },
+  {
+    "id": "BIPI.JK-2026-10-28T09:28:22.930269",
+    "ticker": "BIPI.JK",
+    "tanggal": "2026-10-28",
+    "jam": "09:28",
+    "tipe": "scalping-murah",
+    "sinyal": "SCALPING_MURAH_WATCH",
+    "harga_saat_sinyal": 84.0,
+    "sudah_dievaluasi": false,
+    "harga_evaluasi": null,
+    "perubahan_persen": null,
+    "benar": null
   }
 ]
